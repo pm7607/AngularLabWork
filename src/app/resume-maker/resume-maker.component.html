@@ -1,0 +1,50 @@
+<div class="container row">
+    <div class="col-5">
+      <div class="mb-3">
+        <label class="form-label">First Name:</label>
+        <input type="text" class="form-control" (input)="datafill($event)" name="firstname">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Last Name:</label>
+        <input type="text" class="form-control" (input)="datafill($event)" name="lastname">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Role:</label>
+        <input type="text" class="form-control" (input)="datafill($event)" name="role">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">About Us:</label>
+        <input type="text" class="form-control" (input)="datafill($event)" name="aboutus">
+      </div>
+      <h4>Work Experience:</h4>
+      <div class="mb-3">
+        <label class="form-label">Company Name:</label>
+        <input type="text" class="form-control" (input)="workdata($event)" name="comapanyname">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Role in Company:</label>
+        <input type="text" class="form-control" (input)="workdata($event)" name="comapanyrole">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Start Date:</label>
+        <input type="date" class="form-control" (input)="workdata($event)" name="startdate">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">End Date:</label>
+        <input type="date" class="form-control" (input)="workdata($event)" name="enddate">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Description:</label>
+        <input type="text" class="form-control" (input)="workdata($event)" name="comapanydescription">
+      </div>
+      <Button type="submit" class="p-2 bg-gray rounded" (click)="add()">
+        Add More Work Experience
+      </Button>
+    </div>
+    <div class="col-7">
+      firstname:{{alldetails.firstname}} <br>
+      <div *ngFor="let temp of alldetails.workExperience">
+        Company Name is : {{temp.comapanyname}}
+      </div>
+    </div>
+  </div>

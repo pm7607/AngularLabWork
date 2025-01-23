@@ -1,0 +1,11 @@
+header {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+.nav-tabs .nav-link {
+    color: #e0e0e0;
+}
+.nav-tabs .nav-link.active {
+    background-color: #333333;
+    color: #ffffff;
+}
