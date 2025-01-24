@@ -1,10 +1,14 @@
-<div class="container mt-5">
-  <div class="card" style="width: 18rem;">
-    <img src='/images/ResumeBuilder.webp' class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Resume Builder</h5>
-      <p class="card-text">An Angular-powered Resume Maker designed to craft professional resumes seamlessly.</p>
-      <a routerLink="resume-maker" class="btn btn-primary">Generate Resume</a>
+<div class="container my-5">
+  <div class="row row-gap-5">
+    <div class="col-md-4" *ngFor="let card of cards">
+      <div class="card" style="width: 18rem;">
+        <img [src]="card.image" class="card-img-top w-100 " style="height: 170px;"  [alt]="card.title">  
+        <div class="card-body">
+          <h5 class="card-title">{{ card.title }}</h5>
+          <p class="card-text">{{ card.description }}</p>
+          <a [routerLink]="card.link" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

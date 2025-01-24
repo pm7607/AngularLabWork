@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <app-header />
+    <h1>{{ title }}</h1>
+    <h2>date is : {{ date | date:'M/d/yy'  }} formate is : M/d/yy</h2>
+    <h2>date is : {{ date | date:'d/M/yyyy'  }} formate is :d/M/yyyy</h2>
+    <h2> spi is : {{ spi | number :'2.2-3'  }}</h2>
+    <H1>Hello this is my first lab</H1>
+    <button [disabled]="!click">
+      click me!!
+    </button><br/>
+    Enter your name : <input type="text" [value]="title" disabled>
+    <hr>
+    
+    <h1>Input Box is: <input type="text" (input)="desplaydetail($event)"></h1>
+    <h1>{{ temp }}</h1>
+    <hr>
+    <button (click)="clicked()">Click Me!</button>
+    <h1>{{temp1}}</h1>
+    
+    <hr>
+    <h1>key events in angular.</h1>
+    <input type="text" (keyup)="keyupbutton($event)" (keypress)="keyupbutton($event)" (keydown)="keyupbutton($event)">
+    <h1>{{keyupvalue}}</h1>
+    <hr>
+    <h1>mouse events  in angular </h1>
+    <h1 (click)="mousebutton($event)" (contextmenu)="mousebutton($event)" (mouseout)="mousebutton($event)"  (dblclick)="mousebutton($event)" (mousedown)="mousebutton($event)" (mouseover)="mousebutton($event)" (mouseenter)="mousebutton($event)" (mouseup)="mousebutton($event)">hello guyssss...</h1>
+    <h2>{{ mousevalue }}</h2>
+    <hr>
+    <h1>form events</h1>
+    <form (submit)="fm($event)" (reset)="fm($event)">
+    <input type="text" (change)="desplaydetail($event)" (blur)="fm($event)" (focus)="fm($event)" >
+    <input type="text" (blur)="fm($event)" (focus)="fm($event)" (input)="desplaydetail($event)">
+    <input type="submit" value="submit" >
+    <input type="reset" value="reset" >
+    </form>
+    
+    <h1>{{ f }}</h1>
+</div>

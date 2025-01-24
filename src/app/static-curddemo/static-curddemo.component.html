@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <input type="text" [(ngModel)]="student" />
+
+  <button (click)="insert()">press me</button>
+
+  <br />
+
+  <hr />
+  search here :
+
+  <input type="text" (input)="search($event)" [(ngModel)]="searchdata" />
+
+  <table>
+    <tr *ngFor="let i of studentdata; let ind = index">
+      <td>{{ i }}</td>
+
+      <td>
+        <button (click)="change(ind)">change me</button>
+
+        <button (click)="delete(ind)">kill me</button>
+      </td>
+
+      <td></td>
+    </tr>
+  </table>
+</div>

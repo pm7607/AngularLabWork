@@ -1,0 +1,43 @@
+<div class="container mt-5">
+
+<!-- *ngIf -->
+
+<p *ngIf="a;then yesthen; else elblock">
+</p>
+<ng-template #yesthen>
+  this text for condition is true. 
+  
+</ng-template>
+<ng-template #elblock>
+  sorry bruh i cann't do this things !!!!
+</ng-template>
+<button (click)="operation()">{{ a ? 'False' :'True' }}</button>
+
+
+
+
+<!-- ng[Switch] -->
+<br>
+Enter input here :<input type="text" (change)="initVar($event)">
+<div [ngSwitch]="day" >
+  <h1 *ngSwitchCase="'Sunday'">Sunday</h1>
+  <h1 *ngSwitchCase="'Monday'">Monday</h1>
+  <h1 *ngSwitchCase="'Tuesday'">Tuesday</h1>
+  <h1 *ngSwitchCase="'Wedneshday'">Wedneshday</h1>
+  <h1 *ngSwitchCase="'Thursday'">Thursday</h1>
+  <h1 *ngSwitchCase="'Friday'">Friday</h1>
+  <h1 *ngSwitchCase="'Saturday'">Saturday</h1>
+  <h1 *ngSwitchDefault>Not Valid</h1>
+</div>
+
+<!-- Attribute Directive -->
+<!-- ngClass -->
+
+<h1 [ngClass]="['demo','hello']">hello Angular How are 'You ???</h1>
+ 
+
+<!-- ngstyle -->
+<h1 [ngStyle]="style">Rajkot === Bihar</h1>
+
+<button (click)="changestyle()">change style</button>
+</div>

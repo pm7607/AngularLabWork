@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="p-5">
+        <div class="d-flex mb-5 justify-content-center">
+          <h1>Template Driven Forms</h1>
+        </div>
+        <div class="d-flex justify-content-center">
+          <form class="w-50" #userform="ngForm">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" id="exampleInputEmail1"
+                aria-describedby="emailHelp" [(ngModel)]="user.uemail" name="email" #email="ngModel" required>
+              <div id="emailHelp" *ngIf="email.invalid && email.touched && !user.uemail" class="form-text">
+                Please enter an email address.
+              </div>
+              <div id="emailHelp" *ngIf="email.invalid && email.touched && user.uemail" class="form-text">
+                Please enter a valid email format.
+              </div>
+            </div>
+      
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+                [(ngModel)]="user.upassword" #password="ngModel" [pattern]="'^[a-zA-Z0-9!@#$%^&*_=+-]{8,12}$'" required>
+      
+              <div id="passwordHelp" *ngIf="password.invalid && password.touched && !user.upassword" class="form-text">
+                Please enter a password.
+              </div>
+              <div id="passwordHelp" *ngIf="password.invalid && password.touched && user.upassword" class="form-text">
+                Password must be 8-12 characters and contain only alphanumeric characters or special symbols.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">SPI</label>
+              <input type="number" class="form-control" id="exampleInputPassword1" name="spi"
+                [(ngModel)]="user.uspi" #spi="ngModel"  min="0" max="10" required>
+      
+              <div id="passwordHelp" *ngIf="spi.invalid && spi.touched && !user.uspi  " class="form-text">
+                Please enter a SPI.
+              </div>
+              <div id="passwordHelp" *ngIf="spi.invalid && spi.touched && (user.uspi! < 0 || user.uspi! > 10) && user.uspi " class="form-text">
+                Please enter a valid SPI (between 0 and 10).
+              </div>        
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>

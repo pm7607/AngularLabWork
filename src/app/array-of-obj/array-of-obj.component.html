@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <input type="text" [(ngModel)]="temp.firstname" />
+  <input type="text" [(ngModel)]="temp.lastname" />
+
+  <button (click)="insert()">{{ idtoindex == -1 ? "ADD" : "Update" }}</button>
+
+  <br />
+
+  <hr />
+  search here :<br />
+
+  <input type="text" (input)="search($event)" [(ngModel)]="searchdata" />
+
+  <table border="1px solid black">
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Action</td>
+    </tr>
+    <tr *ngFor="let i of studentdata; let ind = index">
+      <td>
+        {{ i.firstname }}
+      </td>
+      <td>
+        {{ i.lastname }}
+      </td>
+      <td>
+        <button (click)="change(ind)">change</button>
+
+        <button (click)="delete(ind)">delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
