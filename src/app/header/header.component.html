@@ -13,24 +13,31 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link "
-              role="button"
-              aria-expanded="false"
-              routerLink="practical-page"
-            >
-              Practicals
-            </a>
-          </li>
-        </ul>
+      <div class="collapse navbar-collapse gap-3" id="navbarSupportedContent">
+        <a
+          class="nav-link text-secondary"
+          role="button"
+          aria-expanded="false"
+          routerLink="practical-page"
+        >
+          Practicals
+        </a>
+        <a class="nav-link text-secondary" role="button" routerLink="collaborators">
+          Collaborators
+        </a>
       </div>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input
+          [(ngModel)]="searchQuery"
+          name="searchQuery"
+          class="form-control me-2 w-100"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          (input)="filterResults()"
+        />
       </form>
+      
     </div>
   </nav>
 </div>

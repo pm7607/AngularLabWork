@@ -46,5 +46,23 @@ export class PracticalPageComponent {
       description: 'An Angular application to demonstrate the use of Practicals in Angular.',
       link: 'lab-practicals'
     },
+    {
+      title: 'Reactive Forms',
+      image: '/images/reactive.png',
+      description: 'An Angular application to demonstrate the use of Reactive forms in Angular.',
+      link: 'reactive-forms'
+    },
+    {
+      title: 'Student Forms',
+      image: '/images/student.png',
+      description: 'An Angular application to demonstrate the use of Student forms in Angular.',
+      link: 'student-forms'
+    },
+    {
+      title: 'Route Demo & nested routes',
+      image: '/images/student.png',
+      description: 'An Angular application to demonstrate the use of Route & nested Routes in Angular.',
+      link: 'route-demo'
+    },
   ];
 }

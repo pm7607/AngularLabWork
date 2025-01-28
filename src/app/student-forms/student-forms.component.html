@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <form [formGroup]="studentForm" (ngSubmit)="addStudent()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Age</label>
+          <input type="number" class="form-control" id="exampleInputPassword1" formControlName="age" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleInputPassword1" formControlName="email" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Phone</label>
+          <input type="number" class="form-control" id="exampleInputPassword1" formControlName="phone" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Address</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" formControlName="address" />
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="studentForm.invalid">Submit</button>
+      </form>
+      <table class="mt-5 table table-bordered">
+        <tr class="p-4">
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+        <tr  *ngFor="let stu of students let i = index">
+            <td class="p-4">{{ stu.name }}</td>
+            <td class="p-4">{{ stu.age }}</td>
+            <td class="p-4">{{ stu.email }}</td>
+            <td class="p-4">{{ stu.phone }}</td>
+            <td class="p-4">{{ stu.address }}</td>
+            <td class="p-4">
+                <button class="btn" style="background-color: #007bff; color: white;" (click)="delete(i)">Delete</button>
+            </td>
+        </tr>
+      </table>
+</div>
