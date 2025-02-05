@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <form [formGroup]="studentform" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="email"
+      />
+      <div
+        id="emailHelp"
+        class="form-text"
+        *ngIf="
+          studentform.get('email')?.invalid &&
+          studentform.get('email')?.touched
+        "
+      >
+        Enter the Name
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputEmail1"
+        formControlName="password"
+        aria-describedby="emailHelp"
+      />
+      <div
+        id="emailHelp"
+        class="form-text"
+        *ngIf="
+          studentform.get('password')?.invalid &&
+          studentform.get('password')?.touched
+        "
+      >
+        Enter the Password
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="studentform.invalid"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+</div>

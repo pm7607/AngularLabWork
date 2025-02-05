@@ -10,7 +10,7 @@ import { from } from 'rxjs';
 })
 export class ReactiveFormsComponent {
   username=new FormControl('',[Validators.required,Validators.minLength(5)]);
-  password=new FormControl('',[Validators.required,Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]);
+  password=new FormControl('',[Validators.required,Validators.email]);
 
   onSubmit(){
     console.log(this.username.value);

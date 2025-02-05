@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -11,12 +11,21 @@ import { Student } from '../student';
 
 @Component({
   selector: 'app-student-forms',
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule,NgIf],
   templateUrl: './student-forms.component.html',
   styleUrl: './student-forms.component.css',
 })
 export class StudentFormsComponent {
   students: [ Student ] = [{ name: '', email: '', address: '' }];
+  hasValue = true;
+
+
+  ngOnInit(){
+    if(!this.students[0].name && !this.students[0].email && !this.students[0].address){
+      this.hasValue = false;
+    }
+    
+  }
 
   studentForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -28,10 +37,16 @@ export class StudentFormsComponent {
 
 
   addStudent() {
+    if(!this.students[0].name && !this.students[0].email && !this.students[0].address){
+      this.students.splice(0,1)
+    }
     this.students.push(this.studentForm.value as Student);
+    this.hasValue=true
     this.studentForm.reset();
   }
   delete(i:number){
     this.students.splice(i,1)
   }
+
+
 }

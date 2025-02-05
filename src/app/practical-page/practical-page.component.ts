@@ -60,9 +60,15 @@ export class PracticalPageComponent {
     },
     {
       title: 'Route Demo & nested routes',
-      image: '/images/student.png',
+      image: '/images/route-demo.png',
       description: 'An Angular application to demonstrate the use of Route & nested Routes in Angular.',
       link: 'route-demo'
     },
+    {
+      title: 'Form Builder Demo',
+      image: '/images/formbuilder.png',
+      description: 'An Angular application to demonstrate the use of Form Builders in Angular.',
+      link: 'form-builder-demo'
+    }
   ];
 }
