@@ -1,50 +1,132 @@
-<div class="container m-5 row ">
-    <div class="col-5">
-      <div class="mb-3">
-        <label class="form-label">First Name:</label>
-        <input type="text" class="form-control" (input)="datafill($event)" name="firstname">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="nav nav-tabs" id="resumeTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="personal-info-tab" data-bs-toggle="tab" data-bs-target="#personal-info" type="button" role="tab" aria-controls="personal-info" aria-selected="true">Personal Information</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="education-experience-tab" data-bs-toggle="tab" data-bs-target="#education-experience" type="button" role="tab" aria-controls="education-experience" aria-selected="false">Education & Experience</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-details-tab" data-bs-toggle="tab" data-bs-target="#contact-details" type="button" role="tab" aria-controls="contact-details" aria-selected="false">Contact Details</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="resumeTabsContent">
+        <div class="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
+          <form >
+            <div class="mb-3">
+              <label class="form-label">First Name:</label>
+              <input type="text" class="form-control" [(ngModel)]="alldetails.firstname" name="firstname">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Last Name:</label>
+              <input type="text" class="form-control" [(ngModel)]="alldetails.lastname" name="lastname">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Role:</label>
+              <input type="text" class="form-control" [(ngModel)]="alldetails.role" name="role">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">About Us:</label>
+              <input type="text" class="form-control" [(ngModel)]="alldetails.aboutus" name="aboutus">
+            </div>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="education-experience" role="tabpanel" aria-labelledby="education-experience-tab">
+          <form (ngSubmit)="addEducation()">
+            <h4>Education</h4>
+            <div class="mb-3">
+              <label class="form-label">Degree:</label>
+              <input type="text" class="form-control" [(ngModel)]="education.degree" name="degree">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Institution:</label>
+              <input type="text" class="form-control" [(ngModel)]="education.institution" name="institution">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Year of Graduation:</label>
+              <input type="text" class="form-control" [(ngModel)]="education.year" name="year">
+            </div>
+            <button type="button" class="btn btn-secondary" (click)="addEducation()">Add More Education</button>
+          </form>
+          <form (ngSubmit)="addExperience()">
+            <h4>Experience</h4>
+            <div class="mb-3">
+              <label class="form-label">Company Name:</label>
+              <input type="text" class="form-control" [(ngModel)]="workExperience.comapanyname" name="comapanyname">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Role in Company:</label>
+              <input type="text" class="form-control" [(ngModel)]="workExperience.comapanyrole" name="comapanyrole">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Start Date:</label>
+              <input type="date" class="form-control" [(ngModel)]="workExperience.startdate" name="startdate">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">End Date:</label>
+              <input type="date" class="form-control" [(ngModel)]="workExperience.enddate" name="enddate">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description:</label>
+              <input type="text" class="form-control" [(ngModel)]="workExperience.comapanydescription" name="comapanydescription">
+            </div>
+            <button type="button" class="btn btn-secondary" (click)="addExperience()">Add More Experience</button>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="contact-details" role="tabpanel" aria-labelledby="contact-details-tab">
+          <form >
+            <div class="mb-3">
+              <label class="form-label">Email:</label>
+              <input type="email" class="form-control" [(ngModel)]="contact.email" name="email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone:</label>
+              <input type="text" class="form-control" [(ngModel)]="contact.phone" name="phone">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Address:</label>
+              <input type="text" class="form-control" [(ngModel)]="contact.address" name="address">
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Last Name:</label>
-        <input type="text" class="form-control" (input)="datafill($event)" name="lastname">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Role:</label>
-        <input type="text" class="form-control" (input)="datafill($event)" name="role">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">About Us:</label>
-        <input type="text" class="form-control" (input)="datafill($event)" name="aboutus">
-      </div>
-      <h4>Work Experience:</h4>
-      <div class="mb-3">
-        <label class="form-label">Company Name:</label>
-        <input type="text" class="form-control" (input)="workdata($event)" name="comapanyname">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Role in Company:</label>
-        <input type="text" class="form-control" (input)="workdata($event)" name="comapanyrole">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Start Date:</label>
-        <input type="date" class="form-control" (input)="workdata($event)" name="startdate">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">End Date:</label>
-        <input type="date" class="form-control" (input)="workdata($event)" name="enddate">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Description:</label>
-        <input type="text" class="form-control" (input)="workdata($event)" name="comapanydescription">
-      </div>
-      <Button type="submit" class="p-2 bg-gray rounded" (click)="add()">
-        Add More Work Experience
-      </Button>
     </div>
-    <div class="col-7">
-      firstname:{{alldetails.firstname}} <br>
-      <div *ngFor="let temp of alldetails.workExperience">
-        Company Name is : {{temp.comapanyname}}
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="text-center">{{alldetails.firstname}} {{alldetails.lastname}}</h2>
+          <h4 class="text-center">{{alldetails.role}}</h4>
+          <hr>
+          <div class="mb-3">
+            <h5>About Me</h5>
+            <p>{{alldetails.aboutus}}</p>
+          </div>
+          <div class="mb-3">
+            <h5>Education</h5>
+            <div *ngFor="let edu of alldetails.education" class="mb-3">
+              <p><strong>{{edu.degree}}</strong> from {{edu.institution}}, {{edu.year}}</p>
+            </div>
+          </div>
+          <div class="mb-3">
+            <h5>Work Experience</h5>
+            <div *ngFor="let temp of alldetails.workExperience" class="mb-3">
+              <h6>{{temp.comapanyname}}</h6>
+              <p><strong>{{temp.comapanyrole}}</strong></p>
+              <p>{{temp.startdate | date}} - {{temp.enddate | date}}</p>
+              <p>{{temp.comapanydescription}}</p>
+              <hr>
+            </div>
+          </div>
+          <div class="mb-3">
+            <h5>Contact Details</h5>
+            <p>Email: {{contact.email}}</p>
+            <p>Phone: {{contact.phone}}</p>
+            <p>Address: {{contact.address}}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>

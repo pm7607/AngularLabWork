@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 
 
 @Component({
   selector: 'app-lab-practicals',
-  imports: [RouterOutlet,CommonModule,HeaderComponent],
+  imports: [CommonModule,HeaderComponent],
   templateUrl: './lab-practicals.component.html',
   styleUrl: './lab-practicals.component.css'
 })

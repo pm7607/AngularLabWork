@@ -1,0 +1,21 @@
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #5a6268;
+  color: white;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: #c82333;
+  color: white;
+}

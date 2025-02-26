@@ -1,10 +1,9 @@
 import { NgClass, NgIf, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-diractives',
-  imports: [RouterOutlet,NgIf,NgSwitch,NgSwitchCase,NgSwitchDefault,NgClass,NgStyle],
+  imports: [NgIf,NgSwitch,NgSwitchCase,NgSwitchDefault,NgClass,NgStyle],
   templateUrl: './diractives.component.html',
   styleUrl: './diractives.component.css'
 })

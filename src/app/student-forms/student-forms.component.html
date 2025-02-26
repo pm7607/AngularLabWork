@@ -1,79 +1,99 @@
 <div class="container mt-5">
   <form [formGroup]="studentForm" (ngSubmit)="addStudent()">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Name</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        formControlName="name"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Age</label>
-      <input
-        type="number"
-        class="form-control"
-        id="exampleInputPassword1"
-        formControlName="age"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleInputPassword1"
-        formControlName="email"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Phone</label>
-      <input
-        type="number"
-        class="form-control"
-        id="exampleInputPassword1"
-        formControlName="phone"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Address</label>
+      <label for="name" class="form-label">Name</label>
       <input
         type="text"
         class="form-control"
-        id="exampleInputPassword1"
+        id="name"
+        formControlName="name"
+      />
+      <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" class="text-danger">
+        Name is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        formControlName="age"
+      />
+      <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched" class="text-danger">
+        Age is required and must be a number.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+      <div *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched" class="text-danger">
+        Valid email is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input
+        type="number"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+      />
+      <div *ngIf="studentForm.get('phone')?.invalid && studentForm.get('phone')?.touched" class="text-danger">
+        Phone number is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address"
         formControlName="address"
       />
+      <div *ngIf="studentForm.get('address')?.invalid && studentForm.get('address')?.touched" class="text-danger">
+        Address is required.
+      </div>
     </div>
     <button
       type="submit"
       class="btn btn-primary"
       [disabled]="studentForm.invalid"
     >
-      Submit
+      {{ isEdit ? 'Update' : 'Submit' }}
     </button>
   </form>
   <div *ngIf="hasValue">
-  <table class="mt-5 table table-bordered text-center">
-    <tr class="p-4">
-      <th>Name</th>
-      <th>Age</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Address</th>
-      <th>Action</th>
-    </tr>
+    <table class="mt-5 table table-bordered text-center">
+      <tr class="p-4">
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
       <tr *ngFor="let stu of students; let i = index">
         <td class="p-4">{{ stu.name }}</td>
         <td class="p-4">{{ stu.age }}</td>
         <td class="p-4">{{ stu.email }}</td>
         <td class="p-4">{{ stu.phone }}</td>
         <td class="p-4">{{ stu.address }}</td>
-        <td class="p-4">
+        <td class="p-4 d-flex gap-2" >
           <button
-            class="btn"
-            style="background-color: #007bff; color: white"
+            type="button"
+            class="btn btn-secondary"
+            (click)="edit(i)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-danger"
             (click)="delete(i)"
           >
             Delete

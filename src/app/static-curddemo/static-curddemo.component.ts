@@ -1,11 +1,10 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-static-curddemo',
-  imports: [RouterOutlet, NgFor, FormsModule],
+  imports: [ NgFor, FormsModule],
   templateUrl: './static-curddemo.component.html',
   styleUrl: './static-curddemo.component.css'
 })

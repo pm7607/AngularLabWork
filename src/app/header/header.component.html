@@ -1,6 +1,6 @@
 <div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" routerLink="/">EduLearn</a>
       <button
         class="navbar-toggler"
@@ -14,30 +14,35 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse gap-3" id="navbarSupportedContent">
-        <a
-          class="nav-link text-secondary"
-          role="button"
-          aria-expanded="false"
-          routerLink="practical-page"
-        >
-          Practicals
-        </a>
-        <a class="nav-link text-secondary" role="button" routerLink="collaborators">
-          Collaborators
-        </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link text-secondary"
+              role="button"
+              aria-expanded="false"
+              routerLink="practical-page"
+            >
+              Practicals
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" role="button" routerLink="collaborators">
+              Collaborators
+            </a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input
+            [(ngModel)]="searchQuery"
+            name="searchQuery"
+            class="form-control me-2 w-100"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            (input)="filterResults()"
+          />
+        </form>
       </div>
-      <form class="d-flex" role="search">
-        <input
-          [(ngModel)]="searchQuery"
-          name="searchQuery"
-          class="form-control me-2 w-100"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          (input)="filterResults()"
-        />
-      </form>
-      
     </div>
   </nav>
 </div>

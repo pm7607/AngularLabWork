@@ -1,24 +1,63 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-resume-maker',
-  imports: [NgFor],
+  imports: [NgFor, FormsModule, DatePipe],
   templateUrl: './resume-maker.component.html',
   styleUrl: './resume-maker.component.css'
 })
 export class ResumeMakerComponent {
-  tempwork={}
-  alldetails:any={
-    workExperience:[]
+  alldetails: any = {
+    firstname: '',
+    lastname: '',
+    role: '',
+    aboutus: '',
+    education: [],
+    workExperience: []
+  };
+
+  education: any = {
+    degree: '',
+    institution: '',
+    year: ''
+  };
+
+  contact: any = {
+    email: '',
+    phone: '',
+    address: ''
+  };
+
+  workExperience: any = {
+    comapanyname: '',
+    comapanyrole: '',
+    startdate: '',
+    enddate: '',
+    comapanydescription: ''
+  };
+
+ 
+
+  addEducation() {
+    this.alldetails.education.push({ ...this.education });
+    this.education = {
+      degree: '',
+      institution: '',
+      year: ''
+    };
   }
-  datafill(e:any){
-    this.alldetails={...this.alldetails,[e.target.name]:e.target.value};
+
+  addExperience() {
+    this.alldetails.workExperience.push({ ...this.workExperience });
+    this.workExperience = {
+      comapanyname: '',
+      comapanyrole: '',
+      startdate: '',
+      enddate: '',
+      comapanydescription: ''
+    };
   }
-  workdata(e:any){
-    this.tempwork={...this.tempwork,[e.target.name]:e.target.value};
-  }
-  add(){
-    this.alldetails.workExperience.push(this.tempwork)
-  }
+
 }

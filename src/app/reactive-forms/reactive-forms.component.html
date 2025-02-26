@@ -1,33 +1,37 @@
 <div class="container mt-5">
-    <form (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [formControl]="username" />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" [formControl]="password" />
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      <table class="table mt-5 table-bordered w-50">
-        <tr>
-            <td>FieldName</td>
-            <td>Dirty</td>
-            <td>Touched</td>
-            <td>Valid</td>
-        </tr>
-        <tr>
-            <td>Username</td>
-            <td>{{username.dirty}}</td>
-            <td>{{username.touched}}</td>
-            <td>{{username.valid}}</td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td>{{password.dirty}}</td>
-            <td>{{password.touched}}</td>
-            <td>{{password.valid}}</td>
-        </tr>
-      </table>
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="email"
+        class="form-control"
+        id="username"
+        [formControl]="username"
+      />
+      <div *ngIf="username.invalid && username.touched" class="text-danger">
+        Valid email is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        [formControl]="password"
+      />
+      <div *ngIf="password.invalid && password.touched" class="text-danger">
+        Password is required and must be at least 5 characters long.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="username.invalid || password.invalid">
+      Submit
+    </button>
+  </form>
+
+  <div *ngIf="submittedData" class="mt-5">
+    <h3>Submitted Data</h3>
+    <p><strong>Username:</strong> {{ submittedData.username }}</p>
+    <p><strong>Password:</strong> {{ submittedData.password }}</p>
+  </div>
 </div>

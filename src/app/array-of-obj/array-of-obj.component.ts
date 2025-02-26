@@ -1,11 +1,10 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-array-of-obj',
-  imports: [RouterLink, NgFor,FormsModule],
+  imports: [ NgFor,FormsModule],
   templateUrl: './array-of-obj.component.html',
   styleUrl: './array-of-obj.component.css'
 })

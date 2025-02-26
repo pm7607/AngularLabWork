@@ -16,37 +16,55 @@ import { Student } from '../student';
   styleUrl: './student-forms.component.css',
 })
 export class StudentFormsComponent {
-  students: [ Student ] = [{ name: '', email: '', address: '' }];
-  hasValue = true;
+  students: Student[] = [];
+  hasValue = false;
+  isEdit = false;
+  editIndex: number | null = null;
 
-
-  ngOnInit(){
-    if(!this.students[0].name && !this.students[0].email && !this.students[0].address){
+  ngOnInit() {
+    if (!this.students.length) {
       this.hasValue = false;
     }
-    
   }
 
   studentForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    age: new FormControl(''),
-    email: new FormControl(''),
+    age: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl('', [Validators.required]),
-    address: new FormControl(''),
+    address: new FormControl('', [Validators.required]),
   });
 
-
   addStudent() {
-    if(!this.students[0].name && !this.students[0].email && !this.students[0].address){
-      this.students.splice(0,1)
+    if (this.isEdit && this.editIndex !== null) {
+      this.students[this.editIndex] = this.studentForm.value as Student;
+      this.isEdit = false;
+      this.editIndex = null;
+    } else {
+      this.students.push(this.studentForm.value as Student);
     }
-    this.students.push(this.studentForm.value as Student);
-    this.hasValue=true
+    this.hasValue = true;
     this.studentForm.reset();
   }
-  delete(i:number){
-    this.students.splice(i,1)
+
+  delete(i: number) {
+    this.students.splice(i, 1);
+    if (!this.students.length) {
+      this.hasValue = false;
+    }
   }
 
+  edit(i: number) {
+    this.isEdit = true;
+    this.editIndex = i;
+    const student = this.students[i];
+    this.studentForm.setValue({
+      name: student.name,
+      age: student.age?.toString() || '',
+      email: student.email,
+      phone: student.phone?.toString() || '',
+      address: student.address,
+    });
+  }
 
 }
